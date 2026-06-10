@@ -9,6 +9,13 @@ load_dotenv()
 with open("config.json") as f:
     config = json.load(f)
 
+#call this after every sudo command to pass the password
+def sudo_pass():
+    #pass password for sudo
+    stdin.write(machine["password"] + '\n')
+    stdin.flush()
+
+
 mydb = mysql.connector.connect(
   host=os.getenv("host"),
   user=os.getenv("user"),
@@ -27,11 +34,13 @@ for x in myresult:
 print(config['machines'][1])
 
 for machine in config['machines']:
-    print(machine["ip"])
+    client = paramiko.SSHClient()
+    #fixes unknown host key stuff
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    #use creds from config
+    client.connect(hostname=machine["ip"], username=machine["user"], password=machine["password"])
+    stdin, stdout, stderr = client.exec_command('sudo -S id')
+    sudo_pass()
 
-#client = paramiko.SSHClient()
-#client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-#client.connect(hostname='://server.com', username='your_user', password='your_password')
-#stdin, stdout, stderr = client.exec_command('ls -l')
-#print(stdout.read().decode())
-#client.close()
+    print(stdout.read().decode())
+    client.close()

@@ -2,30 +2,21 @@
   "machines":[
     {
       "id": 1,
-      "name": "Alpha",
-      "ip": "10.67.2.2",
+      "name": "Fedora",
+      "ip": "100.79.20.111",
       "os": "linux",
       "service": "web",
-      "user": "root",
-      "password": "pass"
+      "user": "user",
+      "password": "sqordfish01"
     },
     {
       "id": 2,
-      "name": "Beta",
-      "ip": "10.67.2.10",
+      "name": "Ubuntu",
+      "ip": "100.81.103.64",
       "os": "linux",
       "service": "mail",
-      "user": "root",
-      "password": "pass"
-    },
-    {
-      "id": 3,
-      "name": "Gamma",
-      "ip": "10.67.2.11",
-      "os": "linux",
-      "service": "splunk",
-      "user": "root",
-      "password": "pass"
+      "user": "user",
+      "password": "sqordfish01"
     }
   ]
 }

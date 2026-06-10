@@ -1,0 +1,31 @@
+{
+  "machines":[
+    {
+      "id": 1,
+      "name": "Alpha",
+      "ip": "10.67.2.2",
+      "os": "linux",
+      "service": "web",
+      "user": "root",
+      "password": "pass"
+    },
+    {
+      "id": 2,
+      "name": "Beta",
+      "ip": "10.67.2.10",
+      "os": "linux",
+      "service": "mail",
+      "user": "root",
+      "password": "pass"
+    },
+    {
+      "id": 3,
+      "name": "Gamma",
+      "ip": "10.67.2.11",
+      "os": "linux",
+      "service": "splunk",
+      "user": "root",
+      "password": "pass"
+    }
+  ]
+}

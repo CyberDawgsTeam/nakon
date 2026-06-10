@@ -7,7 +7,18 @@
       "os": "linux",
       "service": "web",
       "user": "root",
-      "password": "pass"
+      "password": "pass",
+      "vulns":[
+        {
+          "id": 3
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 1
+        }
+      ]
     },
     {
       "id": 2,
@@ -16,7 +27,18 @@
       "os": "linux",
       "service": "mail",
       "user": "root",
-      "password": "pass"
+      "password": "pass",
+      "vulns":[
+        {
+          "id": 3
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 1
+        }
+      ]
     },
     {
       "id": 3,
@@ -25,7 +47,18 @@
       "os": "linux",
       "service": "splunk",
       "user": "root",
-      "password": "pass"
+      "password": "pass",
+      "vulns":[
+        {
+          "id": 3
+        },
+        {
+          "id": 2
+        },
+        {
+          "id": 1
+        }
+      ]
     }
   ]
 }

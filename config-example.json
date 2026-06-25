@@ -1,63 +1,59 @@
 {
-  "machines":[
+  "machines": [
     {
       "id": 1,
-      "name": "Alpha",
-      "ip": "10.67.2.2",
-      "os": "linux",
-      "service": "web",
+      "name": "web01",
+      "ip": "10.67.2.10",
+      "os": "ubuntu22",
       "user": "root",
-      "password": "pass",
-      "vulns":[
-        {
-          "id": 3
-        },
-        {
-          "id": 2
-        },
-        {
-          "id": 1
-        }
-      ]
+      "password": "ChangeMe123!",
+      "configurations": ["apache", "suid-find"]
     },
     {
       "id": 2,
-      "name": "Beta",
-      "ip": "10.67.2.10",
-      "os": "linux",
-      "service": "mail",
+      "name": "mail01",
+      "ip": "10.67.2.20",
+      "os": "ubuntu22",
       "user": "root",
-      "password": "pass",
-      "vulns":[
-        {
-          "id": 3
-        },
-        {
-          "id": 2
-        },
-        {
-          "id": 1
-        }
-      ]
+      "password": "ChangeMe123!",
+      "configurations": ["postfix", "ssh-root-login"]
     },
     {
       "id": 3,
-      "name": "Gamma",
-      "ip": "10.67.2.11",
-      "os": "linux",
-      "service": "splunk",
+      "name": "dns01",
+      "ip": "10.67.2.30",
+      "os": "debian12",
       "user": "root",
-      "password": "pass",
-      "vulns":[
-        {
-          "id": 3
-        },
-        {
-          "id": 2
-        },
-        {
-          "id": 1
-        }
+      "password": "ChangeMe123!",
+      "configurations": ["bind", "suid-vim"]
+    },
+    {
+      "id": 4,
+      "name": "db01",
+      "ip": "10.67.2.40",
+      "os": "ubuntu22",
+      "user": "root",
+      "password": "ChangeMe123!",
+      "configurations": ["mysql", "suid-nano"]
+    },
+    {
+      "id": 5,
+      "name": "ftp01",
+      "ip": "10.67.2.50",
+      "os": "centos9",
+      "user": "root",
+      "password": "ChangeMe123!",
+      "configurations": ["vsftpd", "root-nginx"]
+    },
+    {
+      "id": 6,
+      "name": "splunk01",
+      "ip": "10.67.2.60",
+      "os": "ubuntu22",
+      "user": "root",
+      "password": "ChangeMe123!",
+      "configurations": [
+        { "name": "splunk", "vars": { "USERNAME": "splunk2" } }
       ]
     }
   ]

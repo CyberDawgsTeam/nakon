@@ -109,8 +109,16 @@ def install_package(client, password: str, package: str):
     Install a single package using the remote host's package manager.
     Auto-detects apt-get, dnf, or yum.
     """
+    # Boot-time unattended-upgrades holds the dpkg lock for up to ~2 min — wait it out
+    # before apt-get (mirrors the same loop used in Terraform Step A for the scoring engine).
+    dpkg_wait = (
+        "for i in $(seq 1 60); do "
+        "sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1 || break; "
+        "sleep 2; done; "
+    )
     cmd = (
         f"if command -v apt-get > /dev/null; then "
+        f"{dpkg_wait}"
         f"sudo -S DEBIAN_FRONTEND=noninteractive apt-get install -y {package}; "
         f"elif command -v dnf > /dev/null; then "
         f"sudo -S dnf install -y {package}; "

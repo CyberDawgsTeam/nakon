@@ -39,6 +39,12 @@ def build_script(cfg):
 def stage_attachment(attachment, staging_dir):
     """Download an attachment from vulndb-ui (follows the 302 -> MinIO presigned URL) into
     a local staging directory. Returns the local file path."""
+    if not VULNDB_UI_URL:
+        raise RuntimeError(
+            f"VULNDB_UI_URL is not set in .env — needed to download "
+            f"'{attachment['original_name']}'. Set it to the base URL of your "
+            f"vulndb-ui server (e.g. http://10.0.0.118:3000)."
+        )
     local_path = os.path.join(staging_dir, f"{attachment['id']}-{attachment['original_name']}")
     url = f"{VULNDB_UI_URL}/api/attachments/{attachment['id']}/download"
     response = requests.get(url, allow_redirects=True, timeout=30)
